@@ -1,1 +1,1 @@
-{"cwd":"\/home\/fabio\/Documents\/Privat"}
+{"cwd":"\/home\/simon\/Documents\/Thesis"}

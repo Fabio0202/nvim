@@ -25,7 +25,7 @@ return {
       lsp.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
 
-        -- vim.keymap.set("n", "<leader>?", function() vim.lsp.buf.hover() end, opts)
+        vim.keymap.set("n", "<leader>?", function() vim.lsp.buf.hover() end, opts)
         -- vim.keymap.set("n", "<leader>e", function() vim.diagnostic.goto_next() end, { desc = 'next error message' })
         -- vim.keymap.set("n", "<leader>E", function() vim.diagnostic.goto_prev() end, { desc = 'previous error message' })
 
@@ -39,7 +39,7 @@ return {
           }
         })
         require('mason').setup({
-          -- ensure_installed = { 'debugpy' },
+          ensure_installed = { 'debugpy' },
         })
         require("mason-lspconfig").setup({
           ensure_installed = { 'lua_ls', 'texlab', 'pylsp', },
@@ -47,6 +47,8 @@ return {
             lsp.default_setup
           }
         })
+
+        
       end)
     end,
   },
