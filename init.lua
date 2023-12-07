@@ -1,5 +1,7 @@
 -- For init.lua
         --
+require "fabio.options"
+require "fabio.plugins"
 if vim.g.neovide then
   vim.api.nvim_set_keymap('n', '<Tab>', '>>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<S-Tab>', '<<', { noremap = true, silent = true })
@@ -15,9 +17,6 @@ if vim.g.neovide then
 end
 
 
-require "fabio.options"
-
-require "fabio.plugins"
 
 -- vim.cmd 'colorscheme sonokai'
 -- vim.cmd 'colorscheme kanagawa'
