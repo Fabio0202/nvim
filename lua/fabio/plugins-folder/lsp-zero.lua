@@ -27,10 +27,9 @@ return {
 
       lsp.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
-
         -- vim.keymap.set("n", "k", function() vim.lsp.buf.hover() end, opts) -- this one works pretty good
-        -- vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end,
-        -- 	{ desc = 'format file' })                                    -- this one works pretty good
+        vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end,
+          { desc = 'format file' }) -- this one works pretty good
         -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end,
         -- 	{ desc = 'next error message' })
         -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end,
@@ -68,9 +67,11 @@ return {
           ['pylsp'] = { 'python' },
           -- ['typescript-tools'] = { 'typescriptreact' }
         }
+
+
       })
       require('mason').setup({
-        -- ensure_installed = { 'debugpy' },
+        ensure_installed = { 'debugpy' },
       })
       --TODO: I wasnt able to add debugpy to the ensure installed list
       require("mason-lspconfig").setup({
@@ -100,10 +101,9 @@ return {
               pycodestyle = {
                 enabled = true,
                 ignore = { "E501" }, -- Option 1: Ignore E501
-                maxLineLength = 120 -- Option 2: Set a longer maximum line length
+                maxLineLength = 120  -- Option 2: Set a longer maximum line length
               },
               -- -- type checker
-              pylsp_mypy = { enabled = true },
               -- -- auto-completion options
               jedi_completion = { fuzzy = true },
               -- -- import sorting
@@ -114,9 +114,17 @@ return {
       })
 
 
-      require('lspconfig').tailwindcss.setup({
-        -- root_dir = {}
-      })
+      require('lspconfig')['lua_ls'].setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { 'vim' },
+            },
+          },
+        },
+      }
+
       require('lspconfig').texlab.setup({
 
         -- filetypes = {}
@@ -127,5 +135,11 @@ return {
       --
       -- })
     end,
+    --     vim.cmd [[
+    --   augroup AutoFormatOnSave
+    --     autocmd!
+    --     autocmd BufWritePre * lua vim.lsp.buf.format()
+    --   augroup END
+    -- ]]
   }
 }
