@@ -19,7 +19,7 @@ return {
     config = function()
       require('session_manager').setup {
 
-        vim.keymap.set({ 'n' }, '<leader>S', require('session_manager').load_session, {desc = 'Sessions'}),
+        vim.keymap.set({ 'n' }, '<leader>S', require('session_manager').load_session, {desc = '󱂬 Sessions'}),
 --        vim.keymap.set({ 'n' }, '<leader>fS', require('session_manager').load_session),
 --        vim.keymap.set({ 'n' }, '<leader>Sd', require('session_manager').delete_session),
 --        vim.keymap.set({ 'n' }, '<leader>fD', require('session_manager').delete_session),
