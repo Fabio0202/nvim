@@ -19,7 +19,8 @@ return {
     config = function()
       require('session_manager').setup {
 
-        vim.keymap.set({ 'n' }, '<leader>S', require('session_manager').load_session, {desc = '󱂬 Sessions'}),
+        autoload_mode = require('session_manager.config').AutoloadMode.Disabled, --  Disabled, CurrentDir, LastSession
+        vim.keymap.set({ 'n' }, '<leader>S', require('session_manager').load_session, {desc = '󱂬 Session'}),
 --        vim.keymap.set({ 'n' }, '<leader>fS', require('session_manager').load_session),
 --        vim.keymap.set({ 'n' }, '<leader>Sd', require('session_manager').delete_session),
 --        vim.keymap.set({ 'n' }, '<leader>fD', require('session_manager').delete_session),
